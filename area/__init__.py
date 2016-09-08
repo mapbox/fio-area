@@ -47,8 +47,19 @@ def findExtrema(features):
     return [xMin, yMin, xMax, yMax]
 
 
-def addArea(feature):
-    eCode = getZone(findExtrema(feature))
+def addArea(feature, calc_crs):
+    if calc_crs is None:
+        eCode = getZone(findExtrema(feature))
+    else:
+        eCode = calc_crs
+
     area = projectShapes(feature, {'init': eCode}).area
 
-    return {'area': area}
+    return area
+
+def _area_adder(features, calc_crs):
+    for f in features:
+        areacalc = addArea(f, calc_crs)
+        f['properties']['area'] = areacalc
+        yield f, areacalc
+
