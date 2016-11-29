@@ -5,7 +5,7 @@ import json
 import numpy as np
 from supermercado import super_utils
 
-from area import addArea, _area_adder
+from area import addArea, _area_adder, _poly_filter
 
 @click.command(short_help="Say hi")
 @click.option('--summary', '-s', is_flag=True, help='Output summary statistics to stderr')
@@ -14,7 +14,7 @@ from area import addArea, _area_adder
 @cligj.features_in_arg
 @cligj.sequence_opt
 def area(ctx, features, summary, calc_crs, sequence):
-    features = super_utils.filter_polygons(features)
+    features = _poly_filter(features)
 
     features, sums = zip(*[[f, a] for f, a in _area_adder(features, calc_crs)])
 
