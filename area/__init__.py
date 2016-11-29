@@ -63,3 +63,8 @@ def _area_adder(features, calc_crs):
         f['properties']['area'] = areacalc
         yield f, areacalc
 
+def _poly_filter(features):
+    for f in features:
+        if f['geometry']['type'] == 'MultiPolygon' or f['geometry']['type'] == 'Polygon':
+            yield f
+
