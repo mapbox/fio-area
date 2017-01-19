@@ -30,5 +30,5 @@ setup(name='fio-plugins',
     },
     entry_points="""
     [fiona.fio_commands]
-    area=area.scripts.cli:area
+    area=fio_area.scripts.cli:area
     """)

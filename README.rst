@@ -6,7 +6,7 @@ fio-area
     Usage: fio area [OPTIONS] FEATURES...
 
     Options:
-      -s, --summary               Output summary statistics to stderr
+      -s, --summary               Output summary statistics only
       --calc-crs TEXT             Projection to calculate area in
                                   [DEFAULT=ESRI:52009]
       --sequence / --no-sequence  Write a LF-delimited sequence of texts
