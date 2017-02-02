@@ -14,3 +14,11 @@ fio-area
                                   JSON text containing a feature collection object
                                   (the default).
       --help                      Show this message and exit.
+
+
+Installation
+========
+
+::
+
+    pip install fio-area
