@@ -53,7 +53,7 @@ def addArea(feature, calc_crs):
     elif calc_crs is None:
         {'init': getZone(findExtrema(feature))}
     else:
-        eCode = {'init': calc_crs}
+        ecode = {'init': calc_crs}
 
     area = projectShapes(feature, ecode).area
 
