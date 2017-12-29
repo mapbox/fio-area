@@ -9,7 +9,7 @@ from fio_area import addArea, _area_adder, _poly_filter
 
 @click.command()
 @click.option('--summary', '-s', is_flag=True, help='Output summary statistics only')
-@click.option('--calc-crs', type=str, default='ESRI:54009', help='Projection to calculate area in [DEFAULT=ESRI:52009]')
+@click.option('--calc-crs', type=str, default='ESRI:54009', help='Projection to calculate area in [DEFAULT=ESRI:54009]')
 @click.pass_context
 @cligj.features_in_arg
 @cligj.sequence_opt
