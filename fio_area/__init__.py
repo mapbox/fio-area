@@ -48,12 +48,14 @@ def findExtrema(features):
 
 
 def addArea(feature, calc_crs):
-    if calc_crs is None:
-        eCode = getZone(findExtrema(feature))
+    if calc_crs[0] == '+':
+        ecode = calc_crs
+    elif calc_crs is None:
+        {'init': getZone(findExtrema(feature))}
     else:
-        eCode = calc_crs
+        ecode = {'init': calc_crs}
 
-    area = projectShapes(feature, {'init': eCode}).area
+    area = projectShapes(feature, ecode).area
 
     return area
 
@@ -67,4 +69,3 @@ def _poly_filter(features):
     for f in features:
         if f['geometry']['type'] == 'MultiPolygon' or f['geometry']['type'] == 'Polygon':
             yield f
-
