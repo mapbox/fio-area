@@ -8,7 +8,7 @@ fio-area
     Options:
       -s, --summary               Output summary statistics only
       --calc-crs TEXT             Projection to calculate area in
-                                  [DEFAULT=esri:52009]
+                                  [DEFAULT=esri:54009]
       --sequence / --no-sequence  Write a LF-delimited sequence of texts
                                   containing individual objects or write a single
                                   JSON text containing a feature collection object
