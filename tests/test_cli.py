@@ -26,6 +26,7 @@ def test_cli_default():
     runner = CliRunner()
     result = runner.invoke(area, [path])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
+    print(res)
     assert exp == approx(res)
     assert result.exit_code == 0
 
