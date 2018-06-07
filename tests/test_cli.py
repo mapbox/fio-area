@@ -2,6 +2,8 @@
 import os
 import json
 
+from pytest import approx
+
 from click.testing import CliRunner
 from fio_area.scripts.cli import area
 
@@ -24,7 +26,7 @@ def test_cli_default():
     runner = CliRunner()
     result = runner.invoke(area, [path])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
-    assert res == exp
+    assert exp == approx(res)
     assert result.exit_code == 0
 
 
@@ -41,7 +43,7 @@ def test_cli_summary():
 
     runner = CliRunner()
     result = runner.invoke(area, [path, '--summary'])
-    assert json.loads(result.output) == expected
+    assert approx(json.loads(result.output)) == expected
     assert result.exit_code == 0
 
 
@@ -55,7 +57,7 @@ def test_cli_ESRI():
     runner = CliRunner()
     result = runner.invoke(area, [path, '--calc-crs', 'ESRI:54009'])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
-    assert res == exp
+    assert exp == approx(res)
     assert result.exit_code == 0
 
 
@@ -69,5 +71,5 @@ def test_cli_epsg3857():
     runner = CliRunner()
     result = runner.invoke(area, [path, '--calc-crs', 'epsg:3857'])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
-    assert res == exp
+    assert exp == approx(res)
     assert result.exit_code == 0
