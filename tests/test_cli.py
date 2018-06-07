@@ -22,7 +22,6 @@ def test_cli_default():
 
     runner = CliRunner()
     result = runner.invoke(area, [path])
-
     assert result.exit_code == 0
 
     for e_feat, res_feat in zip(
@@ -45,7 +44,6 @@ def test_cli_summary():
 
     runner = CliRunner()
     result = runner.invoke(area, [path, "--summary"])
-
     assert approx(json.loads(result.output)) == expected
     assert result.exit_code == 0
 
@@ -59,7 +57,6 @@ def test_cli_ESRI():
 
     runner = CliRunner()
     result = runner.invoke(area, [path, "--calc-crs", "ESRI:54009"])
-
     assert result.exit_code == 0
 
     for e_feat, res_feat in zip(
@@ -78,7 +75,6 @@ def test_cli_epsg3857():
 
     runner = CliRunner()
     result = runner.invoke(area, [path, "--calc-crs", "epsg:3857"])
-
     assert result.exit_code == 0
 
     for e_feat, res_feat in zip(
