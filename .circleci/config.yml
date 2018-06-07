@@ -4,11 +4,9 @@ common: &common
   working_directory: ~/fio-area
   steps:
     - checkout
-    - run: sudo pip install virtualenv
-    - run: virtualenv venv
     - run:
         name: install dependencies
-        command: pip install --user tox codecov
+        command: pip install tox codecov --user
     - run:
         name: run tox
         command: ~/.local/bin/tox

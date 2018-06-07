@@ -38,7 +38,7 @@ setup(name='fio-area',
       zip_safe=False,
       install_requires=inst_reqs,
       extras_require={
-          'test': ['pytest', 'pytest-cov', 'coveralls'],
+          'test': ['pytest', 'pytest-cov'],
       },
       entry_points="""
       [fiona.fio_commands]
