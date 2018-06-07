@@ -1,7 +1,17 @@
 fio-area
 ========
 
-::
+.. image:: https://img.shields.io/pypi/v/fio-area.svg
+   :target: https://circleci.com/gh/mapbox/fio-area
+
+.. image:: https://circleci.com/gh/mapbox/fio-area.svg?style=svg
+   :target: https://circleci.com/gh/mapbox/fio-area
+
+.. image:: https://codecov.io/gh/mapbox/fio-area/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/mapbox/fio-area
+
+
+.. code-block:: console
 
     Usage: fio area [OPTIONS] FEATURES...
 
@@ -17,8 +27,8 @@ fio-area
 
 
 Installation
-========
+============
 
-::
+.. code-block:: console
 
     pip install fio-area
