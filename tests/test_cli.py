@@ -16,6 +16,11 @@ def make_feature_collection(data):
     }
 
 
+def get_area(data):
+    """Return a list of areas."""
+    return [f["properties"]["area"] for f in data["features"]]
+
+
 def test_cli_default():
     """Shoult return a geojson with area property."""
     path = os.path.join(os.path.dirname(__file__), 'fixtures/sample.geojson')
@@ -26,7 +31,7 @@ def test_cli_default():
     runner = CliRunner()
     result = runner.invoke(area, [path])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
-    assert exp == approx(res)
+    assert get_area(exp) == approx(get_area(res))
     assert result.exit_code == 0
 
 
@@ -57,7 +62,7 @@ def test_cli_ESRI():
     runner = CliRunner()
     result = runner.invoke(area, [path, '--calc-crs', 'ESRI:54009'])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
-    assert exp == approx(res)
+    assert get_area(exp) == approx(get_area(res))
     assert result.exit_code == 0
 
 
@@ -71,5 +76,5 @@ def test_cli_epsg3857():
     runner = CliRunner()
     result = runner.invoke(area, [path, '--calc-crs', 'epsg:3857'])
     res = make_feature_collection(list(map(json.loads, result.output.splitlines())))
-    assert exp == approx(res)
+    assert get_area(exp) == approx(get_area(res))
     assert result.exit_code == 0
