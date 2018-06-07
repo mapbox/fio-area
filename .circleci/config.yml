@@ -17,6 +17,7 @@ common: &common
              ~/.local/bin/coverage xml
              ~/.local/bin/codecov
           fi
+        when: always
 
 jobs:
   "python-2.7":

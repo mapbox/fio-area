@@ -32,11 +32,11 @@ def test_cli_summary():
     """Shoult return a geojson with area property."""
     path = os.path.join(os.path.dirname(__file__), 'fixtures/sample.geojson')
     expected = {
-        "min": 294402748285.0502,
-        "max": 850337428101.8224,
-        "mean": 603326626751.0883,
-        "sum": 3619959760506.5293,
-        "std": 197308285092.32553
+        "min": 294482961341.2758,
+        "max": 850713020250.7839,
+        "mean": 603329112176.4628,
+        "sum": 3619974673058.7764,
+        "std": 197484273024.1649
     }
 
     runner = CliRunner()
