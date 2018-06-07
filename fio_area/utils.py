@@ -15,30 +15,27 @@ def getZone(bbox, zonethresh=3):
 
     is_n = (bbox[3] - bbox[1]) / 2.0 + bbox[1] > 0
 
-    zmap = {
-        True: 326,
-        False: 327
-    }
+    zmap = {True: 326, False: 327}
 
     if (maxZone - minZone + 1) > zonethresh:
-        raise ValueError('Feature crosses too many zones')
+        raise ValueError("Feature crosses too many zones")
+
     else:
-        return 'epsg:{0}{1}'.format(zmap[is_n], ctrZone)
+        return "epsg:{0}{1}".format(zmap[is_n], ctrZone)
 
 
 def projectShapes(feature, toCRS):
     project = partial(
-        pyproj.transform,
-        pyproj.Proj(fcrs.from_epsg(4326)),
-        pyproj.Proj(toCRS))
+        pyproj.transform, pyproj.Proj(fcrs.from_epsg(4326)), pyproj.Proj(toCRS)
+    )
 
-    return shpTrans(project, shape(feature['geometry']))
+    return shpTrans(project, shape(feature["geometry"]))
 
 
 def findExtrema(features):
     epsilon = 1.0e-10
 
-    totalArr = np.array([c for f in features['geometry']['coordinates'] for c in f])
+    totalArr = np.array([c for f in features["geometry"]["coordinates"] for c in f])
 
     xMax = totalArr[:, 0].max() + epsilon
     xMin = totalArr[:, 0].min() - epsilon
@@ -54,7 +51,7 @@ def addArea(feature, calc_crs):
     else:
         eCode = calc_crs
 
-    area = projectShapes(feature, {'init': eCode}).area
+    area = projectShapes(feature, {"init": eCode}).area
 
     return area
 
@@ -62,11 +59,13 @@ def addArea(feature, calc_crs):
 def _area_adder(features, calc_crs):
     for f in features:
         areacalc = addArea(f, calc_crs)
-        f['properties']['area'] = areacalc
+        f["properties"]["area"] = areacalc
         yield f, areacalc
 
 
 def _poly_filter(features):
     for f in features:
-        if f['geometry']['type'] == 'MultiPolygon' or f['geometry']['type'] == 'Polygon':
+        if f["geometry"]["type"] == "MultiPolygon" or f["geometry"][
+            "type"
+        ] == "Polygon":
             yield f
