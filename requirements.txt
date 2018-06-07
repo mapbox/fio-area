@@ -1,15 +1,6 @@
-affine
 click
-click-plugins
 cligj
-enum34
 Fiona
-mercantile
 numpy
-pyparsing
 pyproj
-rasterio
 Shapely
-six
-snuggs
-supermercado
