@@ -32,3 +32,12 @@ Installation
 .. code-block:: console
 
     pip install fio-area
+
+Example
+=======
+
+.. code-block:: console
+
+    fio cat some-area.geojson | fio area -s
+    {"min": 405306050878.5006, "max": 405306050878.5006, "mean": 405306050878.5006, "sum": 405306050878.5006, "std": 0.0}
+ 
