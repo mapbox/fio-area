@@ -18,14 +18,14 @@ from fio_area.utils import _area_adder, _poly_filter
     default="esri:54009",
     help="Projection to calculate area in [DEFAULT=esri:54009]",
 )
+@click.option("--densify", type=int, default=None,
+    help="Densify between feature vertices before projecting; helps with accuracy for sparse globe-spanning geometries")
 @click.pass_context
 @cligj.features_in_arg
 @cligj.sequence_opt
-def area(ctx, features, summary, calc_crs, sequence):
+def area(ctx, features, summary, calc_crs, densify, sequence):
     features = _poly_filter(features)
-
-    calc_crs = calc_crs.lower()
-    features, sums = zip(*[[f, a] for f, a in _area_adder(features, calc_crs)])
+    features, sums = zip(*[[f, a] for f, a in _area_adder(features, calc_crs, densify=densify)])
 
     if summary:
         stats = [np.min, np.max, np.mean, np.sum, np.std]
