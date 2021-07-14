@@ -51,7 +51,7 @@ def addArea(feature, calc_crs):
     else:
         eCode = calc_crs
 
-    area = projectShapes(feature, {"init": eCode}).area
+    area = projectShapes(feature, eCode).area
 
     return area
 
