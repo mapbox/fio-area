@@ -51,7 +51,7 @@ def addArea(feature, calc_crs):
     else:
         eCode = calc_crs
 
-    area = projectShapes(feature, {"init": eCode}).area
+    area = projectShapes(feature, eCode).area
 
     return area
 
@@ -65,7 +65,8 @@ def _area_adder(features, calc_crs):
 
 def _poly_filter(features):
     for f in features:
-        if f["geometry"]["type"] == "MultiPolygon" or f["geometry"][
-            "type"
-        ] == "Polygon":
+        if (
+            f["geometry"]["type"] == "MultiPolygon"
+            or f["geometry"]["type"] == "Polygon"
+        ):
             yield f
